@@ -25,3 +25,15 @@ h1 {
     display: flex;
     flex-wrap: wrap;
  }
+
+ .buttonCon {
+    display: flex;
+    justify-content: center;
+ }
+ .newButton {
+    width: 150px;
+    height: 35px;
+    background-color: blue;
+    color: aliceblue;
+    border-radius: 6px;
+ }

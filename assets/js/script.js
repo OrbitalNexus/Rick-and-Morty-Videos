@@ -55,4 +55,9 @@ function morty(data) {
 });
 }
 
+function refreshPage(){
+
+  window.location.reload();
+  
+}
 
