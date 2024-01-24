@@ -11,3 +11,17 @@ h1 {
     color: blue;
     text-align: center;
 }
+
+.card {
+    border: 2px solid black;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 5px;
+}
+ #displayCard {
+    display: flex;
+    flex-wrap: wrap;
+ }
