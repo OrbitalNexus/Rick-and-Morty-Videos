@@ -2,52 +2,92 @@
 
 function getChar() {
 
-  let randrm = Math.floor(Math.random() * 42) + 1;
+  let randrm = Math.floor(Math.random() * 41) + 1;
+  let getRick = `https://rickandmortyapi.com/api/character?page=${randrm}`;
 
-   let getRick = `https://rickandmortyapi.com/api/character?page=${randrm}`;
+    return fetch(getRick).then(function (res) {
+        if(!res.ok) throw new Error(res.statusText)
 
-        fetch(getRick)
-        .then(res => res.json())
-        .then(result => {
-            console.log(result);
-            let smith = result.results;
-
-
-           morty(smith)
+        return res.json();
 
     });
 }
-getChar()
 
-function morty(data) {
-  data.forEach(char => {
-    let character = char.name;
-    let image = char.image;
-    let gender = char.gender;
-    let status = char.status;
-    let episode = char.location.name;
-    let origin = char.origin.name;
+// used parsed qs variables
+getChar().then(function (data) {
+    console.log('data :>> ', data);
+    data.results.forEach(char => {
+      let character = char.name;
+      let image = char.image;
+      let gender = char.gender;
+      let status = char.status;
+      let origin = char.origin.name;
+      let location = char.location.name;
+      
+      let card = `<div class="card" style="width: 18rem;">
+      <img src="${image}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Name: ${character}</h5>
+        <p class="card-text">Gender: ${gender}</p>
+        <p class="card-text">Status: ${status}</p>
+        <p class="card-text">Origin: ${origin}</p>
+        <p class="card-text">Location: ${location}</p>
+        <a href="#" class="btn btn-primary">Watch Episode</a>
+      </div>
+      </div>`;
+  
+      $("#displayCard").append(card);
+  
+});
+});
 
-    let card = `<div class="card" style="width: 18rem;">
-    <img src="${image}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">${character}</h5>
-      <p class="card-text">${gender}</p>
-      <p class="card-text">${status}</p>
-      <p class="card-text">${origin}</p>
-      <a href="#" class="btn btn-primary">${episode}</a>
-    </div>
-    </div>`;
+// function getChar() {
 
-    $("#displayCard").append(card);
+//   let randrm = Math.floor(Math.random() * 41) + 1;
+//    let getRick = `https://rickandmortyapi.com/api/character?page=${randrm}`;
+
+//         fetch(getRick)
+//         .then(res => res.json())
+//         .then(result => {
+//             console.log(result);
+//             let smith = result.results;
+
+
+//            morty(smith)
+
+//     });
+// }
+// getChar()
+
+// function morty(data) {
+//   data.forEach(char => {
+//     let character = char.name;
+//     let image = char.image;
+//     let gender = char.gender;
+//     let status = char.status;
+//     let episode = char.location.name;
+//     let origin = char.origin.name;
+
+//     let card = `<div class="card" style="width: 18rem;">
+//     <img src="${image}" class="card-img-top" alt="...">
+//     <div class="card-body">
+//       <h5 class="card-title">${character}</h5>
+//       <p class="card-text">${gender}</p>
+//       <p class="card-text">${status}</p>
+//       <p class="card-text">${origin}</p>
+//       <a href="#" class="btn btn-primary">${episode}</a>
+//     </div>
+//     </div>`;
+
+//     $("#displayCard").append(card);
   
 
-});
-}
+// });
+// }
 
 function refreshPage(){
 
   window.location.reload();
-  
+ 
 }
 
