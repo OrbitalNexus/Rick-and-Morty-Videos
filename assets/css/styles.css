@@ -29,6 +29,14 @@ h1 {
     
  }
 
+  #singleCard {
+    display: block;
+    position: absolute;
+    top: 20vh;
+    left: 42.5%;
+    width: 100%;
+ } 
+
 
 .card {
     border: 2px solid black;
@@ -53,3 +61,8 @@ h1 {
     color: aliceblue;
     border-radius: 6px;
  }
+
+ .hide {
+    display: none;
+ }
+
