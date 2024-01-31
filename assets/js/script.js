@@ -16,8 +16,8 @@ function getChar() {
 }
 
 
-function guess(name) {
-  let gender = `https://api.genderize.io?name=${name}`;
+function video(name) {
+  let gender = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=Rick%20and%20Morty${name}&key=AIzaSyBVegDpBEua2UPD5tSh0cKUawYVuiZ46sw`;
   return fetch(gender).then(function (res) {
     if(!res.ok) throw new Error(res.statusText)
 
@@ -26,37 +26,6 @@ function guess(name) {
 })
 }
 
-// function execute() {
-//   return gapi.client.youtube.search.list({
-//     "part": [
-//       "snippet"
-//     ],
-//     "q": "Rick and Morty"
-//   })
-//       .then(function(response) {
-//               // Handle the results here (response.result has the parsed body).
-//               console.log("Response", response);
-//             },
-//             function(err) { console.error("Execute error", err); });
-
-//           }
-
-
-// function loadClient() {
-//   gapi.client.setApiKey(apiKey);
-//   return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-//       .then(function() { console.log("GAPI client loaded for API"); },
-//             function(err) { console.error("Error loading GAPI client for API", err);
-//             execute();
-//           });
-         
-// }
-// Make sure the client is loaded and sign-in is complete before calling this method.
-
-
-
-// if else to show this or youtube videos.
-// used parsed qs variables
 getChar().then(function (data) {
     console.log('data :>> ', data);
     data.results.forEach(char => {
@@ -80,8 +49,6 @@ getChar().then(function (data) {
   
       $("#displayCard").append(card);
       $(`#singleChar-${id}`).click(function(e){
-        //alert(`${id} was clicked`);
-       // e.preventDefault();
         $(".card").addClass("hide")
         singleChar(id);
       });
@@ -97,11 +64,6 @@ getChar().then(function (data) {
       
                 console.log("singleChar:>>", smith)
                 morty(smith);
-                
-                
-               
-                
-                // call youtube api here
       
          });
       }
@@ -127,8 +89,21 @@ getChar().then(function (data) {
 
         
 
-        guess(char.name).then(function (data) {
+        video(char.name).then(function (data) {
           console.log('data :>> ', data);
+          data.items.forEach(vid => {
+    
+           let ivideo = `<iframe class="ivideo" 
+         width="640" 
+         height="480" 
+         src="https://www.youtube.com/embed/${vid.id.videoId}" 
+         allowfullscreen
+     >
+     </iframe>`
+     $("#videoCard").append(ivideo);
+          });
+         
+        
 
      });
 
