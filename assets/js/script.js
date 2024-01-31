@@ -1,5 +1,5 @@
 
-// In future will store this in evn file. 
+// In future will store this in env file. 
 let apiKey = 'AIzaSyBVegDpBEua2UPD5tSh0cKUawYVuiZ46sw';
 
 // Rick and Morty api call with random page assigned.
