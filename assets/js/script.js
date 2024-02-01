@@ -98,8 +98,8 @@ function morty(char) {
     data.items.forEach(vid => {
     
      let ivideo = `<iframe class="ivideo" 
-         width="640" 
-         height="480" 
+         width="320" 
+         height="240" 
          src="https://www.youtube.com/embed/${vid.id.videoId}" 
          allowfullscreen
           >
