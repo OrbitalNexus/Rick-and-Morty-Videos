@@ -36,6 +36,7 @@ getChar().then(function (data) {
       let image = char.image;
       let gender = char.gender;
       let status = char.status;
+      let species = char.species;
       let origin = char.origin.name;
       let id = char.id;
       
@@ -45,6 +46,7 @@ getChar().then(function (data) {
         <h5 class="card-title">Name: ${character}</h5>
         <p class="card-text">Gender: ${gender}</p>
         <p class="card-text">Status: ${status}</p>
+        <p class="card-text">Species: ${species}</p>
         <p class="card-text">Origin: ${origin}</p>
         <button id="singleChar-${id}" class="btn btn-primary">Watch Episode</button>
       </div>
@@ -78,6 +80,7 @@ function morty(char) {
     let image = char.image;
     let gender = char.gender;
     let status = char.status;
+    let species = char.species;
     let origin = char.origin.name;
     let id = char.id;
 
@@ -87,6 +90,7 @@ function morty(char) {
           <h5 class="card-title">Name: ${character}</h5>
           <p class="card-text">Gender: ${gender}</p>
           <p class="card-text">Status: ${status}</p>
+          <p class="card-text">Species: ${species}</p>
           <p class="card-text">Origin: ${origin}</p>
         </div>
         </div>`;
